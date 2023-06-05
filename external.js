@@ -1,26 +1,43 @@
 const items = ["rock", "paper", "scissors"]
-let cChoice
-let pChoice
+let compSelection
+let playerSelection
 
 function getComputerChoice() {
-  cChoice = items[Math.floor(Math.random() * items.length)]
-  console.log(`computer chose ${cChoice}`)
-  return cChoice
-}
+  compSelection = items[Math.floor(Math.random() * items.length)]
+  const parentElement = document.querySelector(".computer div")
+  console.log(parentElement)
+  return parentElement.querySelector(`#${compSelection}`)
+    }
 
-function getPlayerChoice() {
-  pChoice = prompt("what do you choose? type 'r', 'p', 's' in the box")
-  if (pChoice == "r") {
-    console.log("you chose rock")
-    return "rock"
-  } else if (pChoice == "p") {
-    console.log("you chose paper")
-    return "paper"
-  } else {
-    console.log("you chose scissors")
-    return "scissors"
-  }
+// add event listeners to all player images and return the player choice
+const images = document.querySelectorAll(".you .icons img")
+images.forEach((image) => {
+  image.addEventListener('click', (e) => {
+    playerSelection = e.target.id;
+    transitionEffect(e.target);
+    compSelection = getComputerChoice();
+    transitionEffect(compSelection);
+    roundWinner(playerSelection, compSelection);
+    // compare who wins
+  })
+})
+
+// create transition effect
+function transitionEffect(image) {
+  console.log('image:', image);
+  image.classList.add("clicked");
+  setTimeout(() => {
+    image.classList.remove("clicked"); 
+  }, 1500); 
 }
+// // to toggle from main page to the game page
+// const navToIndex = document.querySelector("#play")
+// navToIndex.addEventListener('click', () => {
+//   window.location.href = 'index.html';
+// });
+
+// get computer's choice
+
 
 function roundWinner(playerSelection, computerSelection) {
   if (
@@ -36,14 +53,15 @@ function roundWinner(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  let win = 0
-  for (let i = 0; i < 5; i++) {
-    console.log(`this is round ${i}`)
-    let out = roundWinner(getPlayerChoice(), getComputerChoice())
-    win = win + out
-  }
-  win > 2 ? console.log("You win the game!") : console.log("You lose the game ")
+function playRound() {
+  // let win = 0
+  // for (let i = 0; i < 5; i++) {
+  //   console.log(`this is round ${i}`)
+  //   let out = roundWinner(getPlayerChoice(), getComputerChoice())
+  //   win = win + out
+  // }
+  // win > 2 ? console.log("You win the game!") : console.log("You lose the game ")
+
 }
 
 game()

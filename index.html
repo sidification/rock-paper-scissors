@@ -8,20 +8,28 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script">
   </head>
+  <script src="external.js" defer> </script>
   <body>
-    <div class="title">
+    <div id="title">
       <h1>Rock Paper Scissors!</h1>
     </div>
-    <div class="choices-rp">
-        <img id="rock" src="rock.png" alt="image of rock">
-        <img id="paper"src="paper.png" alt="image of paper">
+    <div class="container">
+      <div class="you">
+        <h2>You!</h2>
+        <div class="icons">
+          <img id="rock" src="rock.png" alt="image of rock">
+          <img id="paper"src="paper.png" alt="image of paper">
+          <img id="scissors" src="scissors.png" alt="image of scissors">
+        </div>
       </div>
-      <div class="choices-s">
-        <img id="scissors" src="scissors.png" alt="image of scissors">
+      <div class="computer">
+        <h2>Computer!</h2>
+        <div class="icons">
+          <img id="rock" src="rock.png" alt="image of rock">
+          <img id="paper"src="paper.png" alt="image of paper">
+          <img id="scissors" src="scissors.png" alt="image of scissors">
+        </div>
       </div>
-    </div>
-    <div class="btn">
-      <button type="button" class="big-button">Player Choice</button>
     </div>
   </body>
 </html>
